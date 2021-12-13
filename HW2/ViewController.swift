@@ -28,30 +28,29 @@ class ViewController: UIViewController {
         greenSlider.minimumTrackTintColor = .green
         blueSlider.minimumTrackTintColor = .blue
         
-        var redSliderValue = CGFloat(redSlider.value)
-        var greenSliderValue = CGFloat(greenSlider.value)
-        var blueSliderValue = CGFloat(blueSlider.value)
-        
-        viewColored.backgroundColor = .init(red: redSliderValue, green: greenSliderValue, blue: blueSliderValue, alpha: <#CGFloat#>)
-    }
+        setupViewColor()
+}
     
     @IBAction func redSliderAction() {
-        redCounter.text = String(redSlider.value)
-        var redSliderValue = CGFloat(redSlider.value)
+        redCounter.text = String(format: "%.2f", redSlider.value)
+        setupViewColor()
     }
-    
     
     @IBAction func greenSliderAction() {
-        greenCounter.text = String(greenSlider.value)
-       var greenSliderValue = CGFloat(greenSlider.value)
+        greenCounter.text = String(format: "%.2f", greenSlider.value)
+        setupViewColor()
     }
-
-   @IBAction func blueSliderAction() {
-       blueCounter.text = String(blueSlider.value)
-        var blueSliderValue = CGFloat(blueSlider.value)
-   }
     
+    @IBAction func blueSliderAction() {
+        blueCounter.text = String(format: "%.2f", blueSlider.value)
+        setupViewColor()
+    }
     
+    private func setupViewColor() {
+        viewColored.backgroundColor = UIColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
+            alpha: 1)
+    }
 }
-
-
